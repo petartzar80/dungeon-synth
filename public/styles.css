@@ -11,6 +11,10 @@
     font-weight: normal;
 }
 
+::-webkit-scrollbar {
+    display: none;
+}
+
 body {
     background-color: black;
     color: rgb(0, 254, 0);
@@ -24,7 +28,7 @@ body {
 }
 
 header {
-    position: absolute;
+    position: fixed;
     min-width: 100vw;
     min-height: 150px;
     grid-row: 1;
@@ -49,6 +53,11 @@ header {
     height: 90%;
 }
 
+.navbar {
+    position: fixed;
+    right: 20px;
+}
+
 .custom-button {
     background-color: black;
     color: #0088ff;
@@ -59,6 +68,11 @@ header {
     font-size: 40px;
     font-family: "dotty";
     border-color: rgb(204, 255, 0);
+    margin: 0 5px;
+}
+
+.custom-button:focus {
+    border-color: #0088ff;
 }
 
 .bg-image {
@@ -82,6 +96,7 @@ header {
     position: absolute;
     width: 80vw;
     height: 78vh;
+    overflow-y: auto;
     border: 3px groove rgb(0, 254, 0);
     left: 0;
     right: 0;
@@ -89,12 +104,13 @@ header {
     margin-top: 30px;
     background-color: rgba(0, 0, 0, 0.9);
     top: -800px;
+    z-index: 1;
 }
 
 .modal-content {
     display: grid;
-    align-items: center;
-    justify-content: center;
+    /* align-items: center;
+    justify-content: center; */
     padding: 20px;
 }
 
@@ -104,7 +120,25 @@ header {
     color: rgb(204, 255, 0);
 }
 
+.modal-image {
+    margin: 20px;
+    filter: grayscale(1);
+    filter: contrast(1);
+}
+
+.modal-image-overlay {
+    background-color: rgba(0, 254, 0, 0.3);
+    height: 100%;
+}
+
+.modal-image img {
+    border: 2px solid rgb(0, 254, 0);
+    max-height: 100%;
+    object-fit: cover;
+}
+
 .close {
+    display: inline-block;
     text-align: right;
 }
 
@@ -118,4 +152,64 @@ header {
     transition-property: transform;
     transition-duration: 2s;
     transform: translateY(128%);
+}
+
+.modal-bio {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.modal-grid {
+    min-height: 100%;
+    min-width: 100%;
+    grid-template-rows: 50px 250px 250px 250px;
+}
+
+.modal-header {
+    min-width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-name {
+    display: inline-block;
+    text-align: left;
+}
+
+.modal-row {
+    min-width: 100%;
+    min-height: 550px;
+    border: 2px solid red;
+    margin: 15px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.modal-card {
+    min-height: 100%;
+    /* min-width: 100%; */
+    width: 480px;
+    margin: 10px;
+    border: 2px solid blue;
+    display: grid;
+    grid-template-rows: 4fr 1fr;
+    grid-row-gap: 10px;
+    padding: 10px;
+}
+
+.modal-card-window {
+    height: 100%;
+    border: 2px solid yellow;
+}
+
+.modal-card-desc {
+    height: 100%;
+    border: 2px solid green;
+}
+
+.bandcamp-player {
+    position: absolute;
+    border: 2px dotted rgb(0, 254, 0);
+    top: 200px;
+    left: 100px;
 }

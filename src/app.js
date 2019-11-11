@@ -1,20 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
-
-import { Link } from "react-router-dom";
-import Bio from "./bio";
+import { BrowserRouter } from "react-router-dom";
+import BandcampPlayer from "react-bandcamp";
+import About from "./about";
+import Gallery from "./gallery";
+import Reference from "./reference";
+import Adventure from "./adventure";
 
 export default function App() {
     console.log("app here: ");
-    const [slide, setSlide] = useState();
+    const [visible, setVisible] = useState();
+    const [component, setComponent] = useState();
     useEffect(() => {
-        setSlide("off");
-
-        // (async () => {
-        //     console.log("app useEffect");
-        // })();
+        setVisible(false);
+        console.log("setVisible: ", setVisible);
     }, []);
-    console.log("slide: ", slide);
+
+    const toggleModalIsVisible = e => {
+        console.log("e: ", e.target.name);
+        setComponent(e.target.name);
+        setVisible(!visible);
+    };
 
     return (
         <div>
@@ -25,26 +30,38 @@ export default function App() {
                             <img src="./img/logo.png" alt="" />
                         </div>
                         <div className="navbar">
-                            <Link to={`/bio/`}>
-                                <button className="custom-button" name="button">
-                                    BIO
-                                </button>
-                            </Link>
-                            <Link to={`/`}>
-                                <button className="custom-button" name="button">
-                                    GALLERY
-                                </button>
-                            </Link>
-                            <Link to={`/`}>
-                                <button className="custom-button" name="button">
-                                    INFLUENCE
-                                </button>
-                            </Link>
-                            <Link to={`/`}>
-                                <button className="custom-button" name="button">
-                                    ADVENTURE
-                                </button>
-                            </Link>
+                            <button
+                                onClick={e => toggleModalIsVisible(e)}
+                                className="custom-button"
+                                name="about"
+                            >
+                                ABOUT
+                            </button>
+
+                            <button
+                                onClick={e => toggleModalIsVisible(e)}
+                                className="custom-button"
+                                name="gallery"
+                                setVisible={setVisible}
+                            >
+                                GALLERY
+                            </button>
+
+                            <button
+                                onClick={e => toggleModalIsVisible(e)}
+                                className="custom-button"
+                                name="reference"
+                            >
+                                REFERENCE
+                            </button>
+
+                            <button
+                                onClick={e => toggleModalIsVisible(e)}
+                                className="custom-button"
+                                name="adventure"
+                            >
+                                ADVENTURE
+                            </button>
                         </div>
                     </header>
                     <div className="content">
@@ -53,27 +70,28 @@ export default function App() {
                             src="./img/background.png"
                             alt=""
                         />
-                        <div>
-                            <p>content</p>
-                            {slide === "off" && (
-                                <div>
-                                    <Route exact path="/bio/" component={Bio} />
-                                </div>
-                            )}
-                        </div>
+                        {visible && component == "about" && (
+                            <About close={() => setVisible(false)} />
+                        )}
+                        {visible && component == "gallery" && (
+                            <Gallery close={() => setVisible(false)} />
+                        )}
+                        {visible && component == "reference" && (
+                            <Reference close={() => setVisible(false)} />
+                        )}
+                        {visible && component == "adventure" && (
+                            <Adventure close={() => setVisible(false)} />
+                        )}
                     </div>
+                </div>
+                <div className="bandcamp-player">
+                    <BandcampPlayer
+                        album="2944078936"
+                        bgcol="000000"
+                        linkcol="rgb(0, 254, 0)"
+                    />
                 </div>
             </BrowserRouter>
         </div>
     );
 }
-
-// <iframe
-//     style="border: 0; width: 100%; height: 120px;"
-//     src="https://bandcamp.com/EmbeddedPlayer/album=2944078936/size=large/bgcol=000000/linkcol=2ebd35/tracklist=false/artwork=small/transparent=true/"
-//     seamless
-// >
-//     <a href="http://pathofsilence.bandcamp.com/album/d-th-chealtair">
-//         Dìth Chealtair by Cloak &amp; Daggere
-//     </a>
-// </iframe>

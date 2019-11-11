@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-export default function Bio() {
-    console.log("bio here: ");
+export default function About({ close }) {
     const [slide, setSlide] = useState();
     useEffect(() => {
         setSlide("on");
@@ -9,12 +7,17 @@ export default function Bio() {
 
     function off() {
         setSlide("off");
-        history.push("/");
+        setTimeout(() => {
+            close();
+        }, 1000);
     }
 
     return (
         <div>
-            <div className={`modal-container ${slide}`}>
+            <div className={`modal-container modal-bio ${slide}`}>
+                <div className="modal-image">
+                    <img src="/img/bird.jpg" />
+                </div>
                 <div className="modal-content">
                     <p className="close" onClick={off}>
                         X
