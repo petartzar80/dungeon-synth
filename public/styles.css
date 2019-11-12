@@ -217,7 +217,7 @@ header {
     position: absolute;
     border: 2px dotted rgb(0, 254, 0);
     top: 200px;
-    left: 100px;
+    left: 200px;
 }
 
 .modal-intro {
@@ -308,4 +308,9 @@ header {
     width: 280px;
     border: none;
     padding: 10px;
+}
+
+.game-img {
+    image-rendering: crisp-edges;
+    image-rendering: pixelated;
 }

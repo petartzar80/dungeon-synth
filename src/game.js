@@ -9,6 +9,8 @@ export default function Game({ close }) {
     const [newLocation, setNewLocation] = useState();
     const [submit, setSubmit] = useState();
     const [actionMessage, setActionMessage] = useState();
+    const [candleInv, setCandleInv] = useState();
+    const [keyInv, setKeyInv] = useState();
 
     useEffect(() => {
         (async () => {
@@ -25,14 +27,16 @@ export default function Game({ close }) {
         (async () => {
             setAction("");
             setObject("");
-            // if (newLocation == null) {
-            //     setActionMessage(
-            //         "You can't do that. What are you going to do?"
-            //     );
-            // }
+            console.log("new location: ", newLocation);
+            if (newLocation == "error") {
+                setActionMessage(
+                    "You can't do that. What are you going to do?"
+                );
+            }
             const { data } = await axios.get(`/location/${newLocation}`);
             console.log("data: ", data);
             setLocation(data);
+            setActionMessage("What are you going to do?");
         })();
     }, [submit]);
 
@@ -52,14 +56,24 @@ export default function Game({ close }) {
         //     setNewLocation(`${object}`);
         // }
         if (action == "go") {
-            if (object == "n") {
+            if (object == "n" && location.n) {
                 setNewLocation(location.n);
-            } else if (object == "s") {
+            } else if (object == "s" && location.s) {
                 setNewLocation(location.s);
-            } else if (object == "w") {
+            } else if (object == "w" && location.w) {
                 setNewLocation(location.w);
-            } else if (object == "e") {
+            } else if (object == "e" && location.e) {
                 setNewLocation(location.e);
+            } else {
+                setNewLocation("error");
+            }
+        }
+
+        if (action == "take") {
+            if (object == "candle" && location.item == "candle") {
+                setCandleInv(true);
+            } else if (object == "key" && location.item == "key") {
+                setKeyInv(true);
             }
         }
     };
@@ -76,9 +90,16 @@ export default function Game({ close }) {
             <div className={`modal-container modal-intro ${slide}`}>
                 <div className="adventure-left-div">
                     <div className="adventure-image">
-                        <img src="/img/blinko.jpg" />
+                        <img
+                            className="game-img"
+                            src={`/img/game/${location.grid_id}.png`}
+                        />
                     </div>
-                    <div className="inventory">inventory</div>
+                    <div className="inventory">
+                        <p>INVENTORY: </p>
+                        {keyInv && <p>KEY</p>}
+                        {candleInv && <p>CANDLE</p>}
+                    </div>
                 </div>
 
                 <div className="intro-content">
