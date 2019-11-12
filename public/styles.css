@@ -208,9 +208,18 @@ header {
     border: 2px solid yellow;
 }
 
+.modal-card-window img {
+    min-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
 .modal-card-desc {
     height: 100%;
     border: 2px solid green;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 .bandcamp-player {

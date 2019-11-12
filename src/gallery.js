@@ -20,7 +20,9 @@ export default function Gallery({ close }) {
                 <div className="modal-content">
                     <div className="modal-grid">
                         <div className="modal-header">
-                            <p className="modal-name">Gallery</p>
+                            <p className="modal-name">
+                                The past that never was
+                            </p>
                             <p className="close" onClick={off}>
                                 X
                             </p>
@@ -39,6 +41,7 @@ export default function Gallery({ close }) {
                                 <div className="modal-card-desc"></div>
                             </div>
                         </div>
+                        <p className="modal-name">The present that never is</p>
                         <div className="modal-row">
                             <div className="modal-card">
                                 <div className="modal-card-window"></div>
@@ -53,18 +56,33 @@ export default function Gallery({ close }) {
                                 <div className="modal-card-desc"></div>
                             </div>
                         </div>
+                        <p className="modal-name">
+                            The future that will never be
+                        </p>
                         <div className="modal-row">
                             <div className="modal-card">
-                                <div className="modal-card-window"></div>
-                                <div className="modal-card-desc"></div>
+                                <div className="modal-card-window">
+                                    <img src="/img/gallery/elia.jpg" />
+                                </div>
+                                <div className="modal-card-desc">
+                                    <p>La Citta Nuova</p>
+                                </div>
                             </div>
                             <div className="modal-card">
-                                <div className="modal-card-window"></div>
-                                <div className="modal-card-desc"></div>
+                                <div className="modal-card-window">
+                                    <img src="/img/gallery/tatlin.jpg" />
+                                </div>
+                                <div className="modal-card-desc">
+                                    <p>Tatlin's Tower</p>
+                                </div>
                             </div>
                             <div className="modal-card">
-                                <div className="modal-card-window"></div>
-                                <div className="modal-card-desc"></div>
+                                <div className="modal-card-window">
+                                    <img src="/img/gallery/dadakopf.jpeg" />
+                                </div>
+                                <div className="modal-card-desc">
+                                    <p>dada-Kopf</p>
+                                </div>
                             </div>
                         </div>
                     </div>
