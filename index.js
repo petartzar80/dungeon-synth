@@ -22,7 +22,7 @@ app.get("/location/:id", async (req, res) => {
     try {
         const { rows } = await getLocation(req.params.id);
         console.log("location rows: ", rows);
-        res.json(rows);
+        res.json(rows[0]);
     } catch (err) {
         console.log(err);
         res.sendStatus(500);
