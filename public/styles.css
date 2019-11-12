@@ -298,4 +298,14 @@ header {
 .action {
     border: 2px solid red;
     height: 100px;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+}
+
+.action-input {
+    background-color: #880000;
+    width: 280px;
+    border: none;
+    padding: 10px;
 }
