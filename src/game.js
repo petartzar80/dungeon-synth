@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 export default function Game({ close }) {
     const [slide, setSlide] = useState();
     useEffect(() => {
-        setSlide("on game");
+        setSlide("on");
     }, []);
 
     function off() {
@@ -26,10 +26,11 @@ export default function Game({ close }) {
                     <p className="close" onClick={off}>
                         X
                     </p>
-                    <p>
-                        Your mind is fuzzy and you feel the grip of anxiety. Are
-                        you sure you want to open your eyes?
-                    </p>
+                    <div className="description"></div>
+                    <div className="info" id="door-info"></div>
+                    <div className="info" id="item-info"></div>
+                    <div className="info" id="action-info"></div>
+                    <div className="action"></div>
                 </div>
             </div>
         </div>

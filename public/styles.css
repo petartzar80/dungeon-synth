@@ -284,3 +284,18 @@ header {
     max-height: 150px;
     margin: 20px;
 }
+
+.description {
+    border: 2px solid red;
+    height: 300px;
+    margin-bottom: 10px;
+}
+.info {
+    border: 2px solid red;
+    height: 50px;
+    margin-bottom: 10px;
+}
+.action {
+    border: 2px solid red;
+    height: 100px;
+}

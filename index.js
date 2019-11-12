@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const compression = require("compression");
+const { getLocation } = require("./db");
 
 app.use(compression());
 
@@ -16,6 +17,17 @@ if (process.env.NODE_ENV != "production") {
 } else {
     app.use("/bundle.js", (req, res) => res.sendFile(`${__dirname}/bundle.js`));
 }
+
+app.get("/location/:id", async (req, res) => {
+    try {
+        const { rows } = await getLocation(req.params.id);
+        console.log("location rows: ", rows);
+        res.json(rows);
+    } catch (err) {
+        console.log(err);
+        res.sendStatus(500);
+    }
+});
 
 app.get("*", function(req, res) {
     res.sendFile(__dirname + "/index.html");
