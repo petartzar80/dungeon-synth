@@ -16,7 +16,7 @@ export default function Game({ close }) {
         (async () => {
             setSubmit(true);
             setSlide("on");
-            setActionMessage("What are you going to do?");
+            setActionMessage("What is your next move?");
             const { data } = await axios.get(`/location/13`);
             console.log("data: ", data);
             setLocation(data);
@@ -29,14 +29,12 @@ export default function Game({ close }) {
             setObject("");
             console.log("new location: ", newLocation);
             if (newLocation == "error") {
-                setActionMessage(
-                    "You can't do that. What are you going to do?"
-                );
+                setActionMessage("You can't do that. What is your next move?");
             }
             const { data } = await axios.get(`/location/${newLocation}`);
             console.log("data: ", data);
             setLocation(data);
-            setActionMessage("What are you going to do?");
+            setActionMessage("What is your next move?");
         })();
     }, [submit]);
 
@@ -107,19 +105,15 @@ export default function Game({ close }) {
                         X
                     </p>
                     <div className="description">
-                        <p>I'm at the location number {location.grid_id}</p>
                         <p>{location.dscrpt}</p>
                     </div>
                     <div className="info" id="door-info">
-                        {location.door_to && (
-                            <p>
-                                {location.door_nfo} {location.door_state}{" "}
-                                {location.door_to}
-                            </p>
-                        )}
+                        {location.door_to && <p>{location.door_nfo}</p>}
                     </div>
                     <div className="info" id="item-info">
-                        {location.item && <p>{location.item_nfo}</p>}
+                        {!candleInv && location.item && (
+                            <p>{location.item_nfo}</p>
+                        )}
                     </div>
                     <div className="info" id="action-info">
                         <p>{actionMessage}</p>
