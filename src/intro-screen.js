@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-export default function IntroScreen({ close }) {
+export default function IntroScreen({ close, renderGame }) {
+    console.log("renderGame: ", renderGame);
     const [slide, setSlide] = useState();
     useEffect(() => {
         setSlide("on");
@@ -15,7 +16,7 @@ export default function IntroScreen({ close }) {
     return (
         <div>
             <div className={`modal-container modal-intro ${slide}`}>
-                <div className="adventure-image">
+                <div className="intro-image">
                     <img src="/img/bird.jpg" />
                 </div>
                 <div className="intro-content">
@@ -26,10 +27,14 @@ export default function IntroScreen({ close }) {
                         Your mind is fuzzy and you feel the grip of anxiety. Are
                         you sure you want to open your eyes?
                     </p>
+                    <button
+                        className="custom-button intro"
+                        onClick={renderGame}
+                    >
+                        NO!
+                    </button>
                 </div>
-                <div className="intro-button-area">
-                    <button className="custom-button intro">NO!</button>
-                </div>
+                <div className="intro-button-area"></div>
             </div>
         </div>
     );

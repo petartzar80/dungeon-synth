@@ -250,6 +250,16 @@ header {
     overflow: hidden;
 }
 
+.intro-image {
+    margin: 20px;
+    filter: grayscale(1);
+    filter: contrast(1);
+    width: 500px;
+    height: 685px;
+    border: 2px solid rgb(0, 254, 0);
+    overflow: hidden;
+}
+
 .adventure-image img {
     min-width: 496px;
     max-width: 496px;
@@ -282,6 +292,8 @@ header {
 .custom-button.intro {
     width: 300px;
     margin-bottom: 30px;
+    margin-left: auto;
+    margin-right: auto;
     font-size: 150px;
 }
 
@@ -297,6 +309,11 @@ header {
     height: 18.5%;
     max-height: 150px;
     margin: 20px;
+    font-size: 40px;
+    font-family: "dotty";
+    /* color: rgb(204, 255, 0); */
+    color: red;
+    padding: 10px;
 }
 
 .description {
@@ -327,4 +344,10 @@ header {
 .game-img {
     image-rendering: crisp-edges;
     image-rendering: pixelated;
+}
+
+.long-slide {
+    transition-property: transform;
+    transition-duration: 4s;
+    transform: translateY(128%);
 }

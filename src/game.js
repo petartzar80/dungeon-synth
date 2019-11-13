@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-export default function Game({ close }) {
+export default function Game({ close, renderIntro }) {
     const [slide, setSlide] = useState();
     const [location, setLocation] = useState();
     const [action, setAction] = useState();
@@ -13,9 +13,9 @@ export default function Game({ close }) {
     const [keyInv, setKeyInv] = useState();
 
     useEffect(() => {
+        setSlide("long-slide");
         (async () => {
             setSubmit(true);
-            setSlide("on");
             setActionMessage("What is your next move?");
             const { data } = await axios.get(`/location/13`);
             console.log("data: ", data);
@@ -137,9 +137,19 @@ export default function Game({ close }) {
                             value={object}
                             onChange={e => setObject(e.target.value)}
                         />
-                        <button className="custom-button" onClick={actObj}>
-                            SUBMIT
-                        </button>
+                        {location.grid_id != 2 && (
+                            <button className="custom-button" onClick={actObj}>
+                                SUBMIT
+                            </button>
+                        )}
+                        {location.grid_id == 2 && (
+                            <button
+                                className="custom-button"
+                                onClick={renderIntro}
+                            >
+                                RESTART
+                            </button>
+                        )}
                     </div>
                 </div>
             </div>

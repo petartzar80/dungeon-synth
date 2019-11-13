@@ -42,7 +42,6 @@ export default function App() {
                                 onClick={e => toggleModalIsVisible(e)}
                                 className="custom-button"
                                 name="gallery"
-                                setVisible={setVisible}
                             >
                                 GALLERY
                             </button>
