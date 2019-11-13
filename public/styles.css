@@ -297,6 +297,10 @@ header {
     font-size: 150px;
 }
 
+.custom-button.restart {
+    margin: 0 auto;
+}
+
 .adventure-left-div {
     grid-column-start: 1;
     grid-column-end: span 1;

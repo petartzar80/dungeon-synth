@@ -10,7 +10,7 @@ CREATE TABLE test2 (
     item_nfo VARCHAR(300),
     door_state VARCHAR(300),
     door_nfo VARCHAR(300),
-    door_to INT
+    door_to VARCHAR(300)
 );
 
 SELECT * from test2;

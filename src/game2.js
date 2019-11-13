@@ -11,6 +11,8 @@ export default function Game({ close, renderIntro }) {
     const [actionMessage, setActionMessage] = useState();
     const [candleInv, setCandleInv] = useState();
     const [keyInv, setKeyInv] = useState();
+    // const [doorTrigger, setDoorTrigger] = useState(false);
+    // const [doorState, setDoorState] = useState();
 
     useEffect(() => {
         setSlide("long-slide");
@@ -21,12 +23,15 @@ export default function Game({ close, renderIntro }) {
             console.log("data: ", data);
             setLocation(data);
         })();
+        console.log("location on mount: ", location);
+        // setDoorState(location.door_state);
     }, []);
 
     useEffect(() => {
         (async () => {
             setAction("");
             setObject("");
+
             console.log("new location: ", newLocation);
             if (newLocation == "error") {
                 setActionMessage("You can't do that. What is your next move?");
@@ -34,9 +39,22 @@ export default function Game({ close, renderIntro }) {
             const { data } = await axios.get(`/location/${newLocation}`);
             console.log("data: ", data);
             setLocation(data);
+            // setDoorState(location.door_state);
             setActionMessage("What is your next move?");
         })();
+        // setDoorState(location.door_state);
     }, [submit]);
+
+    // useEffect(() => {
+    //     console.log("door trigger door state: ", doorState);
+    //     if (doorState == "closed") {
+    //         setDoorState("open");
+    //     } else if (doorState == "closed" && keyInv) {
+    //         setDoorState("open");
+    //     } else {
+    //         setNewLocation("error");
+    //     }
+    // }, [doorTrigger]);
 
     if (!location) {
         return null;
@@ -44,6 +62,7 @@ export default function Game({ close, renderIntro }) {
 
     console.log("location: ", location);
     console.log("location.n: ", location.n);
+    // console.log("door state: ", doorState);
 
     const actObj = () => {
         setSubmit(!submit);
@@ -53,13 +72,10 @@ export default function Game({ close, renderIntro }) {
         // if (action == "go") {
         //     setNewLocation(`${object}`);
         // }
-        console.log("location door state: ", location.door_state);
         if (
-            (location.door_state == null && action == "go") ||
-            (location.door_state == "open" && action == "go") ||
-            (location.door_state != "open" &&
-                location.door_to != object &&
-                action == "go")
+            action == "go" &&
+            location.door_state !== "locked" &&
+            location.door_state !== "closed"
         ) {
             if (object == "n" && location.n) {
                 setNewLocation(location.n);
@@ -72,10 +88,13 @@ export default function Game({ close, renderIntro }) {
             } else {
                 setNewLocation("error");
             }
-        } else {
-            setNewLocation("error");
         }
-
+        // } else if (
+        //     (action == "go" && location.door_state === "locked" && location.door_to === {`location.${object}`}) ||
+        //     (action == "go" && location.door_state === "closed" && location.door_to === {`location.${object}`})
+        // ) {
+        //     setNewLocation("error");
+        // }
         if (action == "take") {
             if (object == "candle" && location.item == "candle") {
                 setCandleInv(true);
@@ -83,24 +102,16 @@ export default function Game({ close, renderIntro }) {
                 setKeyInv(true);
             }
         }
-
-        if (action == "open" && object == "door") {
-            console.log("Location in open door: ", location);
-            // if (location.door_state != )
-            setLocation({
-                ...location,
-                door_state: null
-            });
-        }
-        if (action == "use" && object == "key") {
-            if (location.door_state == "locked" && keyInv == true)
-                setLocation({
-                    ...location,
-                    door_state: "closed"
-                });
-        }
-
-        console.log("door state: ", location.door_state);
+        // if (
+        //     location.door_to &&
+        //     location.door_state != "locked" &&
+        //     action == "open" &&
+        //     object == "door"
+        // ) {
+        //     console.log("this should work");
+        // } else if (action == "open" && object != "door") {
+        //     setNewLocation("error");
+        // }
     };
 
     function off() {
@@ -135,7 +146,9 @@ export default function Game({ close, renderIntro }) {
                         <p>{location.dscrpt}</p>
                     </div>
                     <div className="info" id="door-info">
-                        {location.door_to && <p>{location.door_nfo}</p>}
+                        {location.door_to && location.door_state !== "open" && (
+                            <p>{location.door_nfo}</p>
+                        )}
                     </div>
                     <div className="info" id="item-info">
                         {!candleInv && location.item && (
@@ -143,27 +156,32 @@ export default function Game({ close, renderIntro }) {
                         )}
                     </div>
                     <div className="info" id="action-info">
-                        <p>{actionMessage}</p>
+                        {location.grid_id != 2 && <p>{actionMessage}</p>}
                     </div>
                     <div className="action">
-                        <input
-                            type="text"
-                            id="action-input"
-                            name="action-input"
-                            placeholder="action"
-                            className="action-input"
-                            value={action}
-                            onChange={e => setAction(e.target.value)}
-                        />
-                        <input
-                            type="text"
-                            id="action-object"
-                            name="action-object"
-                            placeholder="object"
-                            className="action-input"
-                            value={object}
-                            onChange={e => setObject(e.target.value)}
-                        />
+                        {location.grid_id != 2 && (
+                            <React.Fragment>
+                                <input
+                                    type="text"
+                                    id="action-input"
+                                    name="action-input"
+                                    placeholder="action"
+                                    className="action-input"
+                                    value={action}
+                                    onChange={e => setAction(e.target.value)}
+                                />
+                                <input
+                                    type="text"
+                                    id="action-object"
+                                    name="action-object"
+                                    placeholder="object"
+                                    className="action-input"
+                                    value={object}
+                                    onChange={e => setObject(e.target.value)}
+                                />
+                            </React.Fragment>
+                        )}
+
                         {location.grid_id != 2 && (
                             <button className="custom-button" onClick={actObj}>
                                 SUBMIT
@@ -171,7 +189,7 @@ export default function Game({ close, renderIntro }) {
                         )}
                         {location.grid_id == 2 && (
                             <button
-                                className="custom-button"
+                                className="custom-button restart"
                                 onClick={renderIntro}
                             >
                                 RESTART
