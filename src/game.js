@@ -86,11 +86,12 @@ export default function Game({ close, renderIntro }) {
 
         if (action == "open" && object == "door") {
             console.log("Location in open door: ", location);
-            // if (location.door_state != )
-            setLocation({
-                ...location,
-                door_state: null
-            });
+            if (location.door_state != "locked") {
+                setLocation({
+                    ...location,
+                    door_state: null
+                });
+            }
         }
         if (action == "use" && object == "key") {
             if (location.door_state == "locked" && keyInv == true)
