@@ -29,31 +29,55 @@ export default function Gallery({ close }) {
                         </div>
                         <div className="modal-row">
                             <div className="modal-card">
-                                <div className="modal-card-window"></div>
-                                <div className="modal-card-desc"></div>
+                                <div className="modal-card-window">
+                                    <img src="/img/gallery/Dome.jpg" />
+                                </div>
+                                <div className="modal-card-desc">
+                                    <p>Dome</p>
+                                </div>
                             </div>
                             <div className="modal-card">
-                                <div className="modal-card-window"></div>
-                                <div className="modal-card-desc"></div>
+                                <div className="modal-card-window">
+                                    <img src="/img/gallery/Mausoleum.jpg" />
+                                </div>
+                                <div className="modal-card-desc">
+                                    <p>Mausoleum</p>
+                                </div>
                             </div>
                             <div className="modal-card">
-                                <div className="modal-card-window"></div>
-                                <div className="modal-card-desc"></div>
+                                <div className="modal-card-window">
+                                    <img src="/img/gallery/Procession.jpg" />
+                                </div>
+                                <div className="modal-card-desc">
+                                    <p>Procession</p>
+                                </div>
                             </div>
                         </div>
                         <p className="modal-name">The present that never is</p>
                         <div className="modal-row">
                             <div className="modal-card">
-                                <div className="modal-card-window"></div>
-                                <div className="modal-card-desc"></div>
+                                <div className="modal-card-window">
+                                    <img src="/img/gallery/Meander.jpg" />
+                                </div>
+                                <div className="modal-card-desc">
+                                    <p>Meander</p>
+                                </div>
                             </div>
                             <div className="modal-card">
-                                <div className="modal-card-window"></div>
-                                <div className="modal-card-desc"></div>
+                                <div className="modal-card-window">
+                                    <img src="/img/gallery/Mirror.jpg" />
+                                </div>
+                                <div className="modal-card-desc">
+                                    <p>Mirror</p>
+                                </div>
                             </div>
                             <div className="modal-card">
-                                <div className="modal-card-window"></div>
-                                <div className="modal-card-desc"></div>
+                                <div className="modal-card-window">
+                                    <img src="/img/gallery/Submission.jpg" />
+                                </div>
+                                <div className="modal-card-desc">
+                                    <p>Submission</p>
+                                </div>
                             </div>
                         </div>
                         <p className="modal-name">

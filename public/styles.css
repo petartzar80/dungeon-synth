@@ -185,7 +185,7 @@ header {
 .modal-row {
     min-width: 100%;
     min-height: 550px;
-    border: 2px solid red;
+    /* border: 2px solid red; */
     margin: 15px 0;
     display: flex;
     justify-content: space-between;
@@ -196,7 +196,7 @@ header {
     /* min-width: 100%; */
     width: 480px;
     margin: 10px;
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
     display: grid;
     grid-template-rows: 4fr 1fr;
     grid-row-gap: 10px;
@@ -206,6 +206,7 @@ header {
 .modal-card-window {
     height: 100%;
     border: 2px solid yellow;
+    overflow: hidden;
 }
 
 .modal-card-window img {
@@ -220,6 +221,10 @@ header {
     display: flex;
     justify-content: space-around;
     align-items: center;
+}
+
+.no-decoration {
+    text-decoration: none;
 }
 
 .bandcamp-player {
