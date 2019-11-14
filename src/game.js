@@ -93,7 +93,7 @@ export default function Game({ close, renderIntro }) {
                 setNewLocation("error");
             }
         } else {
-            setNewLocation("test");
+            return;
         }
 
         if (action == "take") {
