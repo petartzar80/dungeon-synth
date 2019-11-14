@@ -34,6 +34,9 @@ export default function Game({ close, renderIntro }) {
             const { data } = await axios.get(`/location/${newLocation}`);
             console.log("data: ", data);
             setLocation(data);
+            if (location.grid_id == 1) {
+                console.log("set it here");
+            }
             setActionMessage("What is your next move?");
         })();
     }, [submit]);
@@ -54,6 +57,23 @@ export default function Game({ close, renderIntro }) {
         //     setNewLocation(`${object}`);
         // }
         console.log("location door state: ", location.door_state);
+
+        if (
+            action != "go" ||
+            action != "take" ||
+            action != "use" ||
+            action != "open" ||
+            object != "n" ||
+            object != "s" ||
+            object != "w" ||
+            object != "e" ||
+            object != "key" ||
+            object != "door" ||
+            object != "candle"
+        ) {
+            setActionMessage("You can't do that. What is your next move?");
+        }
+
         if (
             (location.door_state == null && action == "go") ||
             (location.door_state == "open" && action == "go") ||
@@ -77,12 +97,14 @@ export default function Game({ close, renderIntro }) {
         }
 
         if (action == "take") {
-            if (object == "candle" && location.item == "candle") {
+            if (object == "candle" && location.item == "candle" && !candleInv) {
                 setCandleInv(true);
-            } else if (object == "key" && location.item == "key") {
+                setActionMessage("What is your next move?");
+            } else if (object == "key" && location.item == "key" && !keyInv) {
                 setKeyInv(true);
+                setActionMessage("What is your next move?");
             } else {
-                setNewLocation("error");
+                setActionMessage("You can't do that. What is your next move?");
             }
         }
 
@@ -112,6 +134,7 @@ export default function Game({ close, renderIntro }) {
                         door_state: "closed",
                         door_nfo: "The door is unlocked."
                     });
+                    setActionMessage("What is your next move?");
                 } else {
                     setNewLocation("error");
                 }
@@ -164,7 +187,8 @@ export default function Game({ close, renderIntro }) {
                         {location.door_to && <p>{location.door_nfo}</p>}
                     </div>
                     <div className="info" id="item-info">
-                        {!candleInv && location.item && (
+                        {((!candleInv && location.item == "candle") ||
+                            (!keyInv && location.item == "key")) && (
                             <p>{location.item_nfo}</p>
                         )}
                     </div>
