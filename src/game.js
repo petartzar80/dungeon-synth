@@ -193,35 +193,40 @@ export default function Game({ close, renderIntro }) {
                         )}
                     </div>
                     <div className="info" id="action-info">
-                        <p>{actionMessage}</p>
+                        {location.grid_id != 2 && <p>{actionMessage}</p>}
                     </div>
                     <div className="action">
-                        <input
-                            type="text"
-                            id="action-input"
-                            name="action-input"
-                            placeholder="action"
-                            className="action-input"
-                            value={action}
-                            onChange={e => setAction(e.target.value)}
-                        />
-                        <input
-                            type="text"
-                            id="action-object"
-                            name="action-object"
-                            placeholder="object"
-                            className="action-input"
-                            value={object}
-                            onChange={e => setObject(e.target.value)}
-                        />
                         {location.grid_id != 2 && (
-                            <button className="custom-button" onClick={actObj}>
-                                SUBMIT
-                            </button>
+                            <React.Fragment>
+                                <input
+                                    type="text"
+                                    id="action-input"
+                                    name="action-input"
+                                    placeholder="action"
+                                    className="action-input"
+                                    value={action}
+                                    onChange={e => setAction(e.target.value)}
+                                />
+                                <input
+                                    type="text"
+                                    id="action-object"
+                                    name="action-object"
+                                    placeholder="object"
+                                    className="action-input"
+                                    value={object}
+                                    onChange={e => setObject(e.target.value)}
+                                />
+                                <button
+                                    className="custom-button"
+                                    onClick={actObj}
+                                >
+                                    SUBMIT
+                                </button>
+                            </React.Fragment>
                         )}
                         {location.grid_id == 2 && (
                             <button
-                                className="custom-button"
+                                className="custom-button restart"
                                 onClick={renderIntro}
                             >
                                 RESTART
