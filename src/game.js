@@ -73,7 +73,7 @@ export default function Game({ close, renderIntro }) {
                 setNewLocation("error");
             }
         } else {
-            setNewLocation("error");
+            setNewLocation("test");
         }
 
         if (action == "take") {
@@ -81,6 +81,8 @@ export default function Game({ close, renderIntro }) {
                 setCandleInv(true);
             } else if (object == "key" && location.item == "key") {
                 setKeyInv(true);
+            } else {
+                setNewLocation("error");
             }
         }
 
@@ -89,16 +91,29 @@ export default function Game({ close, renderIntro }) {
             if (location.door_state != "locked") {
                 setLocation({
                     ...location,
-                    door_state: null
+                    door_state: null,
+                    door_nfo: "The door is now open."
                 });
+                setActionMessage("What is your next move?");
+            } else {
+                setActionMessage("Try using the key.");
             }
         }
         if (action == "use" && object == "key") {
             if (location.door_state == "locked" && keyInv == true)
                 setLocation({
                     ...location,
-                    door_state: "closed"
+                    door_state: "closed",
+                    door_nfo: "The door is unlocked."
                 });
+        }
+
+        if (action == "use" && object == "candle") {
+            if (location.grid_id == 6 && candleInv) {
+                setNewLocation(1);
+            } else {
+                setNewLocation("error");
+            }
         }
 
         console.log("door state: ", location.door_state);
