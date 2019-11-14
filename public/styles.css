@@ -108,6 +108,10 @@ header {
     z-index: 1;
 }
 
+.modal-container.game {
+    background-color: rgba(0, 0, 0, 0.95);
+}
+
 .modal-content {
     display: grid;
     /* align-items: center;
@@ -247,7 +251,7 @@ header {
     filter: contrast(1);
     width: 500px;
     height: 500px;
-    border: 2px solid rgb(0, 254, 0);
+    border: 2px solid #0088ff;
     overflow: hidden;
 }
 
@@ -322,12 +326,12 @@ header {
 }
 
 .description {
-    border: 2px solid red;
+    /* border: 2px solid red; */
     height: 300px;
     margin-bottom: 10px;
 }
 .info {
-    border: 2px solid red;
+    /* border: 2px solid red; */
     height: 50px;
     margin-bottom: 10px;
 }
@@ -340,10 +344,13 @@ header {
 }
 
 .action-input {
-    background-color: #880000;
+    background-color: rgba(0, 0, 0, 0.8);
     width: 280px;
-    border: none;
+    border: 2px solid rgb(204, 255, 0);
     padding: 10px;
+    font-size: 60px;
+    font-family: "dotty";
+    color: rgb(204, 255, 0);
 }
 
 .game-img {

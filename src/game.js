@@ -161,7 +161,7 @@ export default function Game({ close, renderIntro }) {
 
     return (
         <div>
-            <div className={`modal-container modal-intro ${slide}`}>
+            <div className={`modal-container modal-intro game ${slide}`}>
                 <div className="adventure-left-div">
                     <div className="adventure-image">
                         <img
@@ -204,6 +204,7 @@ export default function Game({ close, renderIntro }) {
                                     name="action-input"
                                     placeholder="action"
                                     className="action-input"
+                                    autoComplete="off"
                                     value={action}
                                     onChange={e => setAction(e.target.value)}
                                 />
@@ -213,6 +214,7 @@ export default function Game({ close, renderIntro }) {
                                     name="action-object"
                                     placeholder="object"
                                     className="action-input"
+                                    autoComplete="off"
                                     value={object}
                                     onChange={e => setObject(e.target.value)}
                                 />
