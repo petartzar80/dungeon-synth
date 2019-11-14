@@ -320,8 +320,8 @@ header {
     margin: 20px;
     font-size: 40px;
     font-family: "dotty";
-    /* color: rgb(204, 255, 0); */
-    color: red;
+    color: rgb(204, 255, 0);
+    /* color: red; */
     padding: 10px;
 }
 
