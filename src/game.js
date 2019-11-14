@@ -13,7 +13,8 @@ export default function Game({ close, renderIntro }) {
     const [keyInv, setKeyInv] = useState();
 
     useEffect(() => {
-        setSlide("long-slide");
+        setSlide("on");
+
         (async () => {
             setSubmit(true);
             setActionMessage("What is your next move?");
@@ -149,6 +150,8 @@ export default function Game({ close, renderIntro }) {
             }
         }
 
+        document.activeElement.blur();
+
         console.log("door state: ", location.door_state);
     };
 
@@ -161,7 +164,7 @@ export default function Game({ close, renderIntro }) {
 
     return (
         <div>
-            <div className={`modal-container modal-intro game ${slide}`}>
+            <div className={`modal-container modal-intro ${slide}`}>
                 <div className="adventure-left-div">
                     <div className="adventure-image">
                         <img

@@ -10,17 +10,15 @@ export default function Adventure({ close }) {
         setSlide("on");
     }, []);
 
-    // function off() {
-    //     setSlide("off");
-    //     setTimeout(() => {
-    //         close();
-    //     }, 1000);
-    // }
-
     return (
         <div>
             {!game && (
-                <IntroScreen close={close} renderGame={() => setGame(true)} />
+                <IntroScreen
+                    close={close}
+                    renderGame={() => {
+                        setGame(true);
+                    }}
+                />
             )}
             {game && <Game close={close} renderIntro={() => setGame(false)} />}
         </div>
