@@ -23,6 +23,15 @@ export default function IntroScreen({ close, renderGame }) {
                     <p className="close" onClick={off}>
                         X
                     </p>
+                    <div className="instructions">
+                        <p className="instructions title">INSTRUCTIONS</p>
+                        <p>Actions you can perform: GO / TAKE / OPEN / USE</p>
+                        <p>
+                            Directions you can take: (n)orth / (s)outh / (w)est
+                            / (e)ast
+                        </p>
+                        <p>Take notice of the objects you encounter.</p>
+                    </div>
                     <p>
                         Your mind is fuzzy and you feel the grip of anxiety. Are
                         you sure you want to open your eyes?

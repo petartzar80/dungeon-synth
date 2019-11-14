@@ -355,3 +355,16 @@ header {
     transition-duration: 4s;
     transform: translateY(128%);
 }
+
+.instructions {
+    border: 2px solid black;
+}
+
+.instructions p {
+    font-size: 50px;
+    color: #0088ff;
+}
+
+.instructions.title p {
+    color: red;
+}
