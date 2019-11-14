@@ -72,11 +72,7 @@ export default function Game({ close, renderIntro }) {
             } else {
                 setNewLocation("error");
             }
-        } else {
-            setNewLocation("test");
-        }
-
-        if (action == "take") {
+        } else if (action == "take") {
             if (object == "candle" && location.item == "candle") {
                 setCandleInv(true);
             } else if (object == "key" && location.item == "key") {
@@ -84,46 +80,33 @@ export default function Game({ close, renderIntro }) {
             } else {
                 setNewLocation("error");
             }
-        }
-
-        if (action == "open") {
-            if (object == "door") {
-                console.log("Location in open door: ", location);
-                if (location.door_state != "locked") {
-                    setLocation({
-                        ...location,
-                        door_state: null,
-                        door_nfo: "The door is now open."
-                    });
-                    setActionMessage("What is your next move?");
-                } else {
-                    setActionMessage("Try using the key.");
-                }
+        } else if (action == "open" && object == "door") {
+            console.log("Location in open door: ", location);
+            if (location.door_state != "locked") {
+                setLocation({
+                    ...location,
+                    door_state: null,
+                    door_nfo: "The door is now open."
+                });
+                setActionMessage("What is your next move?");
+            } else {
+                setActionMessage("Try using the key.");
+            }
+        } else if (action == "use" && object == "key") {
+            if (location.door_state == "locked" && keyInv == true)
+                setLocation({
+                    ...location,
+                    door_state: "closed",
+                    door_nfo: "The door is unlocked."
+                });
+        } else if (action == "use" && object == "candle") {
+            if (location.grid_id == 6 && candleInv) {
+                setNewLocation(1);
             } else {
                 setNewLocation("error");
             }
-        }
-
-        if (action == "use") {
-            if (object == "key" && keyInv == true) {
-                if (location.door_state == "locked") {
-                    setLocation({
-                        ...location,
-                        door_state: "closed",
-                        door_nfo: "The door is unlocked."
-                    });
-                } else {
-                    setNewLocation("error");
-                }
-            } else if (object == "candle" && candleInv) {
-                if (location.grid_id == 6) {
-                    setNewLocation(1);
-                } else {
-                    setNewLocation("error");
-                }
-            } else {
-                setNewLocation("error");
-            }
+        } else {
+            setNewLocation("error");
         }
 
         console.log("door state: ", location.door_state);
