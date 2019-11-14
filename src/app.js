@@ -27,7 +27,7 @@ export default function App() {
                 <div className="container">
                     <header className="border">
                         <div className="logo">
-                            <img src="./img/logo.png" alt="" />
+                            <img src="./img/Zgalgah.png" alt="" />
                         </div>
                         <div className="navbar">
                             <button

@@ -23,7 +23,7 @@ export default function About({ close }) {
                         X
                     </p>
                     <p>
-                        The name Z'Galgah belongs to an archaic Croatian
+                        The name Z'Galgah comes from an archaic Croatian
                         dialect. More precisely, it's derived from the lyric of
                         a poem written in that dialect. The lyric goes:
                         "Z'galgah se nigdo povernul ni", which roughly
