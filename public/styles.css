@@ -394,7 +394,7 @@ header {
     height: 100%;
     display: grid;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.9);
 }
 .gallery-modal img {
     /* max-width: 80%; */
