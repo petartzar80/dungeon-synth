@@ -199,7 +199,7 @@ export default function Game({ close, renderIntro }) {
                         {location.grid_id != 2 && <p>{actionMessage}</p>}
                     </div>
                     <div className="action">
-                        {location.grid_id != 2 && (
+                        {location.grid_id != 2 && location.grid_id != 23 && (
                             <React.Fragment>
                                 <input
                                     type="text"
@@ -235,6 +235,14 @@ export default function Game({ close, renderIntro }) {
                                 onClick={renderIntro}
                             >
                                 RESTART
+                            </button>
+                        )}
+                        {location.grid_id == 23 && (
+                            <button
+                                className="custom-button restart"
+                                onClick={close}
+                            >
+                                SNUFF IT
                             </button>
                         )}
                     </div>
