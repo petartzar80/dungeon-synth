@@ -85,7 +85,7 @@ export default function App() {
                 </div>
                 <div className="bandcamp-player">
                     <BandcampPlayer
-                        album="2944078936"
+                        album="519746101"
                         bgcol="000000"
                         linkcol="rgb(0, 254, 0)"
                     />

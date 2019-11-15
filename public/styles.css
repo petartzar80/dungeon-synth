@@ -234,7 +234,7 @@ header {
 
 .bandcamp-player {
     position: absolute;
-    border: 2px dotted rgb(0, 254, 0);
+    border-bottom: 2px dotted rgb(0, 254, 0);
     top: 200px;
     left: 200px;
 }
