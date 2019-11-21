@@ -162,5 +162,3 @@ export default function Gallery({ close }) {
         </div>
     );
 }
-
-// close={setImgModal(false)}
