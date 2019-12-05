@@ -44,7 +44,6 @@ header {
 .content {
     grid-row: 2;
     border: 3px solid rgb(0, 254, 0);
-    /* background-image: url("./img/background.png"); */
     background-repeat: no-repeat;
     background-size: contain;
 }
@@ -52,6 +51,24 @@ header {
 .logo {
     height: 90%;
     padding: -10px;
+}
+
+.img-bottom {
+    animation: pulse 6s infinite;
+    position: absolute;
+    left: 20px;
+}
+
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 .navbar {
