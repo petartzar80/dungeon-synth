@@ -146,6 +146,7 @@ header {
     margin: 20px;
     filter: grayscale(1);
     filter: contrast(1);
+    background-color: black;
 }
 
 .modal-image-overlay {

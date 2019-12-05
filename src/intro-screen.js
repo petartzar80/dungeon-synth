@@ -17,7 +17,7 @@ export default function IntroScreen({ close, renderGame }) {
         <div>
             <div className={`modal-container modal-intro ${slide}`}>
                 <div className="intro-image">
-                    <img src="/img/bird-contrast.jpg" />
+                    <img src="/img/bird.png" />
                 </div>
                 <div className="intro-content">
                     <p className="close" onClick={off}>

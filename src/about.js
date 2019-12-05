@@ -16,7 +16,7 @@ export default function About({ close }) {
         <div>
             <div className={`modal-container modal-bio ${slide}`}>
                 <div className="modal-image">
-                    <img src="/img/bird-contrast.jpg" />
+                    <img src="/img/bird.png" />
                 </div>
                 <div className="modal-content">
                     <p className="close" onClick={off}>
