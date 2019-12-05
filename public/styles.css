@@ -142,6 +142,10 @@ header {
     color: rgb(204, 255, 0);
 }
 
+/* .modal-content.about {
+    font-size: 60px;
+} */
+
 .modal-image {
     margin: 20px;
     filter: grayscale(1);

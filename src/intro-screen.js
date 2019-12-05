@@ -30,7 +30,11 @@ export default function IntroScreen({ close, renderGame }) {
                             Directions you can take: (n)orth / (s)outh / (w)est
                             / (e)ast
                         </p>
-                        <p>Take notice of the objects you encounter.</p>
+                        <p>- use only the first letter of the direction.</p>
+                        <p>
+                            Take notice of the objects you encounter (like
+                            candles or such).
+                        </p>
                     </div>
                     <p>
                         Your mind is fuzzy and you feel the grip of anxiety. Are
