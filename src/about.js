@@ -23,11 +23,11 @@ export default function About({ close }) {
                         X
                     </p>
                     <p>
-                        The name Z'Galgah comes from a lyric in an archaic
-                        Croatian dialect: "Z'galgah se nigdo povernul ni", which
-                        translates as: "From the gallows nobody returned". To
-                        listen to music click on the skull on the left, to
-                        download the demo - finish the adventure game.
+                        The name Z'Galgah comes from an archaic Croatian
+                        dialect. More precisely, it's derived from the lyric of
+                        a poem written in that dialect. The lyric goes:
+                        "Z'galgah se nigdo povernul ni", which roughly
+                        translates as: "From the gallows nobody returned".
                     </p>
                 </div>
             </div>

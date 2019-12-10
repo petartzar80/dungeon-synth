@@ -78,6 +78,11 @@ export default function App() {
                             src="./img/background.png"
                             alt=""
                         />
+                        <img
+                            className="bg-image anim"
+                            src="./img/background2.png"
+                            alt=""
+                        />
                         {visible && component == "about" && (
                             <About close={() => setVisible(false)} />
                         )}

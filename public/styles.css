@@ -105,6 +105,10 @@ header {
     image-rendering: pixelated;
 }
 
+.bg-image.anim {
+    animation: pulse 10s infinite;
+}
+
 .main-content {
     position: relative;
     z-index: 1;
@@ -131,8 +135,7 @@ header {
 
 .modal-content {
     display: grid;
-    /* align-items: center;
-    justify-content: center; */
+    grid-template-rows: 80px auto;
     padding: 20px;
 }
 
@@ -141,10 +144,6 @@ header {
     font-family: "dotty";
     color: rgb(204, 255, 0);
 }
-
-/* .modal-content.about {
-    font-size: 60px;
-} */
 
 .modal-image {
     margin: 20px;
@@ -167,6 +166,7 @@ header {
 .close {
     display: inline-block;
     text-align: right;
+    height: 100px;
 }
 
 .off {
