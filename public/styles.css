@@ -337,9 +337,10 @@ header {
 
 .inventory {
     border: 2px solid red;
-    height: 18.5%;
-    max-height: 150px;
-    margin: 20px;
+    height: 170px;
+    /* height: 18.5%; */
+    max-height: 170px;
+    margin: 20px 20px 0 20px;
     font-size: 40px;
     font-family: "dotty";
     color: rgb(204, 255, 0);
